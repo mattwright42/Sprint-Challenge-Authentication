@@ -2,7 +2,7 @@ const axios = require('axios');
 const bcrypt = require('bcryptjs');
 const db = require('../database/dbConfig');
 
-const { authenticate } = require('./middlewares');
+const { authenticate, generateToken } = require('./middlewares');
 
 module.exports = server => {
   server.post('/api/register', register);
@@ -21,18 +21,6 @@ function register(req, res) {
       res.status(201).json(ids);
     })
     .catch(err => res.send(err));
-}
-
-function generateToken(user) {
-  const payload = {
-    subject: user.id,
-    username: user.username
-  };
-  const secret = jwtKey;
-  const options = {
-    expiresIn: '15m'
-  };
-  return jwt.sign(payload, secret, options);
 }
 
 function login(req, res) {
