@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, NavLink, withRouter } from 'react-router-dom';
 import Register from './components/Register';
-import Login from './components/Login';
+import SignIn from './components/SignIn';
 import DadJokes from './components/DadJokes';
 
 import './App.css';
@@ -14,12 +14,12 @@ class App extends Component {
         <nav>
           <NavLink to="/">HOME</NavLink>
           <NavLink to="/register">REGISTER</NavLink>
-          <NavLink to="/login">LOGIN</NavLink>
+          <NavLink to="/signin">SIGN IN</NavLink>
         </nav>
         <Switch>
           <Route exact path="/" render={props => <DadJokes {...props} />} />
           <Route path="/register" render={props => <Register {...props} />} />
-          <Route path="login" render={props => <Login {...props} />} />
+          <Route path="signin" render={props => <SignIn {...props} />} />
         </Switch>
       </div>
     );
