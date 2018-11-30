@@ -25,8 +25,8 @@ function register(req, res) {
 
 function login(req, res) {
   // implement user login
-  const creds = req
-    .bodydb('users')
+  const creds = req.body;
+  db('users')
     .where({ username: creds.username })
     .first()
     .then(user => {
