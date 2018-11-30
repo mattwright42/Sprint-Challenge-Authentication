@@ -23,6 +23,18 @@ function register(req, res) {
     .catch(err => res.send(err));
 }
 
+function generateToken(user) {
+  const payload = {
+    subject: user.id,
+    username: user.username
+  };
+  const secret = jwtKey;
+  const options = {
+    expiresIn: '15m'
+  };
+  return jwt.sign(payload, secret, options);
+}
+
 function login(req, res) {
   // implement user login
   const creds = req
